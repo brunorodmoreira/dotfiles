@@ -5,6 +5,11 @@
 # Interactive-only config (aliases, plugins, prompt) lives in .zshrc.
 # =============================================================================
 
+# ---- zoxide doctor off ----
+# Claude Code's Bash tool runs zsh -i, so .zshrc loads and zoxide's doctor
+# trips on its invocation chain. Warning is cosmetic; silence it globally.
+export _ZO_DOCTOR=0
+
 # ---- PATH dedup ----
 typeset -U path PATH
 
