@@ -12,19 +12,22 @@ SAVEHIST=50000
 setopt SHARE_HISTORY HIST_IGNORE_DUPS HIST_IGNORE_SPACE HIST_REDUCE_BLANKS
 
 # ---- Version manager shell integration (hooks; PATH already set in .zshenv) ----
-# pyenv — installs the rehash hook and shell functions. Shims already on PATH.
-eval "$(pyenv init - zsh)"
-
 # fnm — adds the chpwd hook for auto-switch on .nvmrc / engines.node. Default
 # alias bin already on PATH, so this layer is purely for cd-triggered switching.
 eval "$(fnm env --use-on-cd --shell zsh --version-file-strategy recursive --corepack-enabled)"
 
 # ---- Completion system ----
 # Required for brew-installed tool completions in /opt/homebrew/share/zsh/site-functions.
+# Must be loaded BEFORE any tool's completion eval (compdef is defined here).
 autoload -Uz compinit && compinit
 
 # ---- Completions for tools loaded above ----
 [ -s "$BUN_INSTALL/_bun" ] && source "$BUN_INSTALL/_bun"
+
+# uv — Python version selection is per-project via .python-version files
+# (uv reads them natively); no shims/init needed, just completions.
+eval "$(uv generate-shell-completion zsh)"
+eval "$(uvx --generate-shell-completion zsh)"
 
 # ---- Plugins (autosuggestions BEFORE syntax-highlighting) ----
 source /opt/homebrew/share/zsh-autosuggestions/zsh-autosuggestions.zsh

@@ -26,11 +26,6 @@ path=("/opt/homebrew/bin" "/opt/homebrew/sbin" $path)
 # ---- Node via fnm (default alias; interactive adds cd-hook via full fnm init in .zshrc) ----
 path=("$HOME/.local/share/fnm/aliases/default/bin" $path)
 
-# ---- pyenv (shims on PATH; interactive gets full pyenv init for rehash hooks) ----
-export PYENV_ROOT="$HOME/.pyenv"
-[[ -d $PYENV_ROOT/bin ]] && path=("$PYENV_ROOT/bin" $path)
-[[ -d $PYENV_ROOT/shims ]] && path=("$PYENV_ROOT/shims" $path)
-
 # ---- bun ----
 export BUN_INSTALL="$HOME/.bun"
 path=("$BUN_INSTALL/bin" $path)
