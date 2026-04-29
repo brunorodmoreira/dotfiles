@@ -5,6 +5,12 @@
 # =============================================================================
 [[ $- == *i* ]] || return
 
+# ---- Keymap ----
+# Force emacs keymap. Otherwise zsh's startup heuristic picks vi mode because
+# $EDITOR contains "vi" (nvim), which leaves \e^? (Option+Delete) unbound and
+# breaks Alt-prefixed shortcuts.
+bindkey -e
+
 # ---- History ----
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=50000
