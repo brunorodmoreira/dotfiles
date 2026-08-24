@@ -11,6 +11,10 @@
 # breaks Alt-prefixed shortcuts.
 bindkey -e
 
+# Treat / as a word boundary so Option+Delete kills path segments one at a time
+# (matches the Claude Code TUI feel; default WORDCHARS includes /).
+WORDCHARS="${WORDCHARS//\//}"
+
 # ---- History ----
 HISTFILE=$HOME/.zsh_history
 HISTSIZE=50000
@@ -56,3 +60,8 @@ eval "$(atuin init zsh)"
 
 # zoxide must be initialized last
 eval "$(zoxide init zsh)"
+
+# bun completions
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+
+export PATH="$HOME/.local/bin:$PATH"
