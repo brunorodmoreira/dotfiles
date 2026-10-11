@@ -29,7 +29,7 @@ tab_bar_right = [{ type = "zoom" }, { type = "datetime", format = "%H:%M" }]
 tab_bar_right_separator = " · "
 
 [ui.toast]
-delivery = "system"
+delivery = "terminal"
 
 [experimental]
 pane_history = true
