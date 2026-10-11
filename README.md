@@ -14,6 +14,7 @@ external tooling.
 | `.tmux.conf` | tmux — terminal multiplexer |
 | `.config/starship.toml` | starship — prompt |
 | `.config/atuin/config.toml` | atuin — shell history |
+| `.config/herdr/config.toml` | herdr — agent multiplexer (keys, sidebar, notifications) |
 
 ## Install on a new machine
 
@@ -32,6 +33,13 @@ dot checkout
 
 # 4) Hide the rest of $HOME from `dot status`
 dot config --local status.showUntrackedFiles no
+```
+
+5) herdr plugins live outside `config.toml`, so reinstall them (pinned):
+
+```bash
+herdr plugin install persiyanov/herdr-reviewr --ref v0.46.0
+herdr plugin install kryptamine/herdr-auto-title --ref v0.13.1
 ```
 
 After step 3, `.zshrc` is on disk — open a new shell and `dot` is available

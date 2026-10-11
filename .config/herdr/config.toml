@@ -1,0 +1,35 @@
+onboarding = false
+
+[theme]
+auto_switch = true
+dark_name = "catppuccin"
+light_name = "catppuccin-latte"
+
+[keys]
+# GitHub PRs for the current repo in a popup
+[[keys.command]]
+key = "prefix+alt+g"
+type = "popup"
+command = "cd \"$HERDR_ACTIVE_PANE_CWD\" && gh pr status; echo; echo 'press enter to close'; read _"
+width = "85%"
+height = "85%"
+
+# Review the agent's diff beside the chat (reviewr plugin)
+[[keys.command]]
+key = "prefix+alt+r"
+type = "plugin_action"
+command = "persiyanov.reviewr.toggle"
+description = "toggle reviewr pane"
+
+[ui]
+agent_panel_sort = "priority"
+status_indicators = "symbols"
+show_agent_labels_on_pane_borders = true
+tab_bar_right = [{ type = "zoom" }, { type = "datetime", format = "%H:%M" }]
+tab_bar_right_separator = " · "
+
+[ui.toast]
+delivery = "system"
+
+[experimental]
+pane_history = true
